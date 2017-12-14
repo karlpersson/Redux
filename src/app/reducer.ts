@@ -30,6 +30,8 @@ let reducer: Reducer<number> = (state: number, action: Action) => {
       return state + 1;
     case 'DECREMENT':
       return state - 1;
+    case 'PLUS':
+      return state + action.payload;
     default:
       return state;
 
@@ -51,3 +53,10 @@ console.log( reducer(100, decrementAction )); // -> 99
 // any other action just returns the input state
 let unknownAction: Action = { type: 'UNKNOWN' };
 console.log(reducer(100, unknownAction)); // -> 100
+
+let plusSevenAction = {type: 'PLUS', payload: 7}
+
+console.log( reducer(2, plusSevenAction)); // -> 9
+console.log( reducer(3, { type: 'PLUS', payload: 7}) );    // -> 10 
+console.log( reducer(3, { type: 'PLUS', payload: 9000}) ); // -> 9003 
+console.log( reducer(3, { type: 'PLUS', payload: -2}) );   // -> 1
