@@ -11,7 +11,7 @@ interface Reducer<T> {
 //    return state;
 //}
 
-let reducer: Reducer<number> = (state: number, action: Action) => {
+/*let reducer: Reducer<number> = (state: number, action: Action) => {
   if(action.type === 'INCREMENT')
   {
      return state + 1;
@@ -21,6 +21,19 @@ let reducer: Reducer<number> = (state: number, action: Action) => {
       return state - 1;
   }  
   return state;
+}*/
+
+let reducer: Reducer<number> = (state: number, action: Action) => {
+  switch(action.type)
+  {
+    case 'INCREMENT':
+      return state + 1;
+    case 'DECREMENT':
+      return state - 1;
+    default:
+      return state;
+
+  }
 }
 
 //console.log( reducer(0,null));
@@ -34,3 +47,7 @@ console.log( reducer(1, incrementAction )); // -> 2
 let decrementAction: Action = { type: 'DECREMENT'}
 
 console.log( reducer(100, decrementAction )); // -> 99
+
+// any other action just returns the input state
+let unknownAction: Action = { type: 'UNKNOWN' };
+console.log(reducer(100, unknownAction)); // -> 100
