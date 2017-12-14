@@ -7,10 +7,30 @@ interface Reducer<T> {
   (state: T, action: Action): T;
 }
 
+//let reducer: Reducer<number> = (state: number, action: Action) => {
+//    return state;
+//}
+
 let reducer: Reducer<number> = (state: number, action: Action) => {
-    return state;
+  if(action.type === 'INCREMENT')
+  {
+     return state + 1;
+  }
+  if(action.type === 'DECREMENT')
+  {
+      return state - 1;
+  }  
+  return state;
 }
 
-console.log( reducer(0,null));
+//console.log( reducer(0,null));
 
 //.\node_modules\.bin\ts-node ./src/app/reducer.ts
+
+let incrementAction: Action = { type: 'INCREMENT'}
+console.log( reducer(0, incrementAction )); // -> 1
+console.log( reducer(1, incrementAction )); // -> 2
+
+let decrementAction: Action = { type: 'DECREMENT'}
+
+console.log( reducer(100, decrementAction )); // -> 99
