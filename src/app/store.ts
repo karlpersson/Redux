@@ -1,7 +1,18 @@
 import {Reducer,Action} from './reducer';
 
+
+interface ListenerCallback {
+  (): void;
+}
+
+interface UnsubscribeCallback {
+    (): void;
+  }
+
+
 export class Store<T>{
     private _state: T;
+    private _listeners: ListenerCallback[] = [];
 
     constructor(
         private reducer: Reducer<T>,
@@ -17,5 +28,13 @@ export class Store<T>{
 
     dispatch(action: Action): void{
         this._state = this.reducer(this._state,action);
+        this._listeners.forEach((listener: ListenerCallback) => listener());
+    }
+
+    subscribe(listener: ListenerCallback): UnsubscribeCallback{
+        this._listeners.push(listener);
+        return () => {
+            this._listeners = this._listeners.filter(l => l !== listener);
+        };
     }
 }
