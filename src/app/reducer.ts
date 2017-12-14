@@ -2,7 +2,7 @@ interface Action {
     type: string;
     payload?: any;
   }
-  
+
 interface Reducer<T> {
   (state: T, action: Action): T;
 }
@@ -12,3 +12,5 @@ let reducer: Reducer<number> = (state: number, action: Action) => {
 }
 
 console.log( reducer(0,null));
+
+//.\node_modules\.bin\ts-node ./src/app/reducer.ts
