@@ -33,3 +33,21 @@ export let message_reducer: Reducer<AppState> = (state: AppState, action: Action
     }
 
 }
+
+export class MessageActions{
+    static addMessage(message: string): AddMessageAction {
+        return {
+            type: 'ADD_MESSAGE',
+            message: message
+        }
+    }
+    static deleteMessage(index: number): DeleteMessageAction {
+        return {
+            type: 'DELETE_MESSAGE',
+            index: index
+        }
+
+    }
+
+
+}
