@@ -27,3 +27,16 @@ console.log(store.getState()); // -> 2
  
 store.dispatch({ type: 'DECREMENT' });
 console.log(store.getState()); // -> 1
+
+let unsubscribe = store.subscribe(() => {
+  console.log('subscribed: ', store.getState());
+});
+
+store.dispatch({ type: 'INCREMENT' }); // -> subscribed: 1
+store.dispatch({ type: 'INCREMENT' }); // -> subscribed: 2
+
+unsubscribe();
+
+store.dispatch({ type: 'DECREMENT' }); // (nothing logged)
+
+console.log(store.getState()); // -> 1
