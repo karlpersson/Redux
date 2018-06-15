@@ -3,7 +3,7 @@ export interface Action {
     payload?: any;
   }
 
-  type Reducer<T> = (state: T, action: Action) => T;
+  export type Reducer<T> = (state: T, action: Action) => T;
 
  //let reducer: Reducer<number> = (state: number, action: Action) => {
  //    return state;
