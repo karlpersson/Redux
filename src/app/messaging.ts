@@ -1,10 +1,10 @@
 import {Action, Reducer} from './reducer';
 
-export interface AppState{
+export interface AppState {
     messages: string[];
 }
 
-export interface AddMessageAction extends Action{
+export interface AddMessageAction extends Action {
     message: string;
 }
 
@@ -13,8 +13,7 @@ export interface DeleteMessageAction extends Action {
   }
 
 export let message_reducer: Reducer<AppState> = (state: AppState, action: Action): AppState => {
-    switch(action.type)
-    {
+    switch(action.type) {
         case 'ADD_MESSAGE':
             return {
                 messages: state.messages.concat(
@@ -34,7 +33,7 @@ export let message_reducer: Reducer<AppState> = (state: AppState, action: Action
 
 }
 
-export class MessageActions{
+export class MessageActions {
     static addMessage(message: string): AddMessageAction {
         return {
             type: 'ADD_MESSAGE',

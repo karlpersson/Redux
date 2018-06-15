@@ -5,9 +5,9 @@ export interface Action {
 
   export type Reducer<T> = (state: T, action: Action) => T;
 
- //let reducer: Reducer<number> = (state: number, action: Action) => {
+ // let reducer: Reducer<number> = (state: number, action: Action) => {
  //    return state;
- //}
+ // }
 
  /*let reducer: Reducer<number> = (state: number, action: Action) => {
   if(action.type === 'INCREMENT')
@@ -17,13 +17,12 @@ export interface Action {
   if(action.type === 'DECREMENT')
   {
       return state - 1;
-  }  
+  }
   return state;
  }*/
 
-let reducer: Reducer<number> = (state: number, action: Action) => {
-  switch(action.type)
-  {
+const reducer: Reducer<number> = (state: number, action: Action) => {
+  switch(action.type) {
     case 'INCREMENT':
       return state + 1;
     case 'DECREMENT':
@@ -34,27 +33,27 @@ let reducer: Reducer<number> = (state: number, action: Action) => {
       return state;
 
   }
-}
+};
 
 //console.log( reducer(0,null));
 
 //.\node_modules\.bin\ts-node ./src/app/reducer.ts
 
-let incrementAction: Action = { type: 'INCREMENT'}
+const incrementAction: Action = { type: 'INCREMENT'};
 console.log( reducer(0, incrementAction )); // -> 1
 console.log( reducer(1, incrementAction )); // -> 2
 
-let decrementAction: Action = { type: 'DECREMENT'}
+const decrementAction: Action = { type: 'DECREMENT'};
 
 console.log( reducer(100, decrementAction )); // -> 99
 
 // any other action just returns the input state
-let unknownAction: Action = { type: 'UNKNOWN' };
+const unknownAction: Action = { type: 'UNKNOWN' };
 console.log(reducer(100, unknownAction)); // -> 100
 
-let plusSevenAction = {type: 'PLUS', payload: 7}
+const plusSevenAction = {type: 'PLUS', payload: 7};
 
 console.log( reducer(2, plusSevenAction)); // -> 9
-console.log( reducer(3, { type: 'PLUS', payload: 7}) );    // -> 10 
-console.log( reducer(3, { type: 'PLUS', payload: 9000}) ); // -> 9003 
+console.log( reducer(3, { type: 'PLUS', payload: 7}) );    // -> 10
+console.log( reducer(3, { type: 'PLUS', payload: 9000}) ); // -> 9003
 console.log( reducer(3, { type: 'PLUS', payload: -2}) );   // -> 1
