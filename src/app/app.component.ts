@@ -27,7 +27,7 @@ export class AppComponent {
   increment() {
     this.store.dispatch(CounterActions.increment());
   }
- 
+
   decrement() {
     this.store.dispatch(CounterActions.decrement());
   }

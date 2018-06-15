@@ -16,12 +16,12 @@ import { AppStore } from './app-store';
 
 export interface AppState {
   counter: number;
-};
+}
 
 const initialState: AppState = { counter: 0 };
 
 const counterReducer: Reducer<AppState> = (state: AppState = initialState, action: Action): AppState => {
-    switch(action.type){
+    switch (action.type) {
         case INCREMENT:
             return Object.assign({}, state, {counter: state.counter + 1});
         case DECREMENT:
@@ -29,12 +29,12 @@ const counterReducer: Reducer<AppState> = (state: AppState = initialState, actio
         default:
             return state;
     }
-}
+};
 
 export const increment: ActionCreator<Action> = () => ({ type: INCREMENT});
 export const decrement: ActionCreator<Action> = () => ({ type: DECREMENT});
 
-let store: Store<AppState> = createStore<AppState>(counterReducer);
+const store: Store<AppState> = createStore<AppState>(counterReducer);
 
 const devtools: StoreEnhancer<AppState> =
   window['devToolsExtension'] ?
@@ -47,4 +47,4 @@ export function createAppStore(): Store<AppState> {
     );
 }
 
-export const appStoreProviders = { provide: AppStore, useFactory: createAppStore}
+export const appStoreProviders = { provide: AppStore, useFactory: createAppStore};

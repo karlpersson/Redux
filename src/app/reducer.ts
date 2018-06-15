@@ -3,15 +3,13 @@ export interface Action {
     payload?: any;
   }
 
-export interface Reducer<T> {
-  (state: T, action: Action): T;
-}
+  type Reducer<T> = (state: T, action: Action) => T;
 
-//let reducer: Reducer<number> = (state: number, action: Action) => {
-//    return state;
-//}
+ //let reducer: Reducer<number> = (state: number, action: Action) => {
+ //    return state;
+ //}
 
-/*let reducer: Reducer<number> = (state: number, action: Action) => {
+ /*let reducer: Reducer<number> = (state: number, action: Action) => {
   if(action.type === 'INCREMENT')
   {
      return state + 1;
@@ -21,7 +19,7 @@ export interface Reducer<T> {
       return state - 1;
   }  
   return state;
-}*/
+ }*/
 
 let reducer: Reducer<number> = (state: number, action: Action) => {
   switch(action.type)
