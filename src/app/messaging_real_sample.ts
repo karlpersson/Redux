@@ -7,9 +7,9 @@ import {
     createStore
 } from 'redux';
 
-let initialState: AppState = { messages: [] };
+const initialState: AppState = { messages: [] };
 
-let real_reducer: Reducer<AppState> = (state: AppState = initialState, action: Action) => {
+const real_reducer: Reducer<AppState> = (state: AppState = initialState, action: Action) => {
     switch(action.type)
     {
         case 'ADD_MESSAGE':
@@ -19,7 +19,7 @@ let real_reducer: Reducer<AppState> = (state: AppState = initialState, action: A
                 ),
         };
         case 'DELETE_MESSAGE':
-            let idx = (<DeleteMessageAction>action).index;
+            const idx = (<DeleteMessageAction>action).index;
             return {
                 messages: [
                     ...state.messages.slice(0,idx),
@@ -29,7 +29,7 @@ let real_reducer: Reducer<AppState> = (state: AppState = initialState, action: A
     }
 }
 
-let store: Store<AppState> = createStore<AppState>(real_reducer);
+const store: Store<AppState> = createStore<AppState>(real_reducer);
 
 console.log(store.getState()); // -> { messages: [] }
 

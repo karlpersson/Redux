@@ -22,7 +22,7 @@ export interface Action {
  }*/
 
 const reducer: Reducer<number> = (state: number, action: Action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'INCREMENT':
       return state + 1;
     case 'DECREMENT':
@@ -35,9 +35,9 @@ const reducer: Reducer<number> = (state: number, action: Action) => {
   }
 };
 
-//console.log( reducer(0,null));
+// console.log( reducer(0,null));
 
-//.\node_modules\.bin\ts-node ./src/app/reducer.ts
+// .\node_modules\.bin\ts-node ./src/app/reducer.ts
 
 const incrementAction: Action = { type: 'INCREMENT'};
 console.log( reducer(0, incrementAction )); // -> 1
